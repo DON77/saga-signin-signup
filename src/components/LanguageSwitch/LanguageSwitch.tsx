@@ -23,7 +23,7 @@ const LanguageSwitch = () => {
           design="unfill"
           onClick={useCallback(
             () => changeLanguage('en'),
-            []
+            [],
           )}
           disabled={lang === 'en'}
         />
@@ -33,7 +33,7 @@ const LanguageSwitch = () => {
           design="unfill"
           onClick={useCallback(
             () => changeLanguage('ru'),
-            []
+            [],
           )}
           disabled={lang === 'ru'}
         />

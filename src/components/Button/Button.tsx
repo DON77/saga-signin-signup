@@ -7,8 +7,7 @@ type Props = {
   color?: string;
   design?: string;
   disabled?: boolean;
-  onClick?: () => void;
-  type?: 'button' | 'submit';
+  onClick?: any;
 };
 
 const Button = ({
@@ -17,7 +16,6 @@ const Button = ({
   design,
   disabled = false,
   onClick,
-  type = 'button',
 }: Props) => (
   <button
     type="button"

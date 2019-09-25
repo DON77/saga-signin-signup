@@ -1,3 +1,6 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable no-extra-boolean-cast */
+// eslint-disable-next-line no-unused-vars
 import React, { useState, ChangeEvent } from 'react';
 
 import './style.scss';
@@ -17,18 +20,18 @@ const Input = ({
   type = 'text',
   disabled,
   nameClass = '',
-  validate
+  validate,
 }: Props) => {
   const [value, setValue] = useState('');
   const [error, setError] = useState('');
 
-  const handleChange = ({ target: { value } }: ChangeEvent<HTMLInputElement> ) => {
-    setValue(value);
-    onChange(value);
-    setError(validate(value));
-  }
+  const handleChange = ({ target: { value: currentValue } }: ChangeEvent<HTMLInputElement>) => {
+    setValue(currentValue);
+    onChange(currentValue);
+    setError(validate(currentValue));
+  };
 
-  return(
+  return (
     <div className="inputContainer">
       <div className="errorContainer">
         <span className="errorMessage">{error}</span>
@@ -45,7 +48,7 @@ const Input = ({
         `}
       />
     </div>
-  )
+  );
 };
 
 export default Input;
