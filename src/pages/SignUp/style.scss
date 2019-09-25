@@ -1,0 +1,21 @@
+.signUp {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  margin-top: 50px;
+
+  &-container {
+    width: 300px;
+  }
+
+  &-title {
+    text-align: center;
+    margin: 0;
+    font-weight: 100;
+  }
+
+  &-question {
+    text-align: center;
+  }
+}

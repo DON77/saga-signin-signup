@@ -1,4 +1,17 @@
 {
-  "signIn": "Sign In",
-  "signUp": "Sign Up"
+  "signIn": "Log In",
+  "signInQuestion": "Are you here for the first time?",
+  "signUpQuestion": "Already registered?",
+  "signUp": "Sign Up",
+  "pass": "Password",
+  "confPass": "Confirm Password",
+  "log": "E-mail",
+  "loginExist": "Please enter your email!",
+  "loginMail": "Invalid email!",
+  "passExist": "Please enter your password!",
+  "passLength": "Minimum 6 characters required!",
+  "nameExist": "Please enter your name!",
+  "nameLength": "Minimum 2 characters required!",
+  "entName": "Enter your name",
+  "misPass": "Password mismatch"
 }

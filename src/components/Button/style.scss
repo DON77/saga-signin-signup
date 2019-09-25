@@ -1,0 +1,42 @@
+.btn {
+  font-weight: bold;
+  width: 100%;
+  padding: 8px 16px;
+  margin: 2px;
+  border: 0;
+  border-radius: 4px;
+  color: #444;
+  background: #f8f8f8;
+  border: 2px solid #f8f8f8;
+  cursor: pointer;
+  transition: all 0.42s;
+  outline: none;
+  box-sizing: border-box;
+
+  &-primary {
+    color: #fff;
+    background: #7bcd8f;
+    border-color: #7bcd8f;
+    &:not(.btn-disabled):hover, &:not(.btn-disabled):focus {
+      color: #444;
+      background: #f8f8f8;
+      border-color: #7bcd8f;
+    }
+
+    &--unfill {
+      color: #444;
+      background: #f8f8f8;
+      border-color: #7bcd8f;
+      &:not(.btn-disabled):hover, &:not(.btn-disabled):focus {
+        color: #fff;
+        background: #7bcd8f;
+        border-color: #7bcd8f;
+      }
+    }
+  }
+
+  &-disabled {
+    opacity: .5;
+    cursor: pointer;
+  }
+}
