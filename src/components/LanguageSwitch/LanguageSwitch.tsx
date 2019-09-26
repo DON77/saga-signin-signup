@@ -21,6 +21,7 @@ const LanguageSwitch = () => {
           name="en"
           color="primary"
           design="unfill"
+          nameClass="en"
           onClick={useCallback(
             () => changeLanguage('en'),
             [],
@@ -31,6 +32,7 @@ const LanguageSwitch = () => {
           name="ru"
           color="primary"
           design="unfill"
+          nameClass="ru"
           onClick={useCallback(
             () => changeLanguage('ru'),
             [],

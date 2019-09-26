@@ -32,17 +32,23 @@ const SignIn = ({ signIn }: { signIn: Function }) => {
     <div className="signIn">
       <form className="signIn-container">
         <h3 className="signIn-title">{t('signIn')}</h3>
-        <Input placeholder={t('log')} onChange={handleEmailChange} validate={validateLogin} />
+        <Input
+          placeholder={t('log')}
+          onChange={handleEmailChange}
+          validate={validateLogin}
+          nameClass="email"
+        />
         <Input
           type="password"
           placeholder={t('pass')}
           onChange={handlePasswordChange}
           validate={validatePassword}
+          nameClass="password"
         />
-        <Button name={t('signIn')} color="primary" onClick={handleSignIn} />
+        <Button name={t('signIn')} color="primary" onClick={handleSignIn} nameClass="submit" />
         <p className="signIn-question">{t('signInQuestion')}</p>
         <Link to="/sign-up">
-          <Button name={t('signUp')} color="primary" design="unfill" onClick={() => {}} />
+          <Button name={t('signUp')} color="primary" design="unfill" onClick={() => {}} nameClass="register" />
         </Link>
       </form>
     </div>

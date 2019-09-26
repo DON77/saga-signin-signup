@@ -13,6 +13,8 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "i18next": "^17.0.16",
+    "mocha": "^6.2.0",
+    "nightmare": "^3.0.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-i18next": "^10.13.0",
@@ -26,15 +28,15 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "mocha src/**/__tests__/*.ts",
     "eject": "react-scripts eject",
     "server": "node server/index.js",
     "lint": "eslint --ext .ts,.tsx ./src/"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint",
-      "pre-push": "npm run lint"
+      "pre-commit": "npm run lint && npm test",
+      "pre-push": "npm run lint && npm test"
     }
   },
   "eslintConfig": {

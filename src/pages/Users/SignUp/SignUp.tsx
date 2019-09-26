@@ -40,23 +40,27 @@ const SignUp = ({ signUp }: { signUp: Function }) => {
           placeholder={t('log')}
           onChange={(value: string) => handleChange('email', value)}
           validate={validateLogin}
+          nameClass="email"
         />
         <Input
           type="password"
           placeholder={t('pass')}
           onChange={(value: string) => handleChange('password', value)}
           validate={validatePassword}
+          nameClass="password"
         />
         <Input
           type="password"
           placeholder={t('confPass')}
           onChange={(value: string) => handleChange('rePassword', value)}
           validate={validateConfirmPassword}
+          nameClass="confirmPassword"
         />
         <Input
           placeholder={t('entName')}
           onChange={(value: string) => handleChange('name', value)}
           validate={validateName}
+          nameClass="name"
         />
         <Button name={t('signUp')} color="primary" onClick={handleSignUp} />
         <p className="signUp-question">{t('signUpQuestion')}</p>

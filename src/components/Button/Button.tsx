@@ -6,6 +6,7 @@ type Props = {
   name: string;
   color?: string;
   design?: string;
+  nameClass?: string;
   disabled?: boolean;
   onClick?: any;
 };
@@ -14,16 +15,17 @@ const Button = ({
   name,
   color = 'default',
   design,
+  nameClass = '',
   disabled = false,
   onClick,
 }: Props) => (
   <button
     type="button"
-    className={`
-      btn
-      btn-${color}${design ? `--${design}` : ''}
-      ${disabled ? ' btn-disabled' : ''}
-    `}
+    className={`${nameClass} btn btn-${color}${design
+      ? `--${design}`
+      : ''} ${disabled
+      ? ' btn-disabled'
+      : ''}`}
     onClick={onClick}
   >
     {name}

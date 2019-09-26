@@ -42,10 +42,12 @@ const Input = ({
         placeholder={placeholder}
         type={type}
         disabled={Boolean(disabled)}
-        className={`
-          ${nameClass}
-          ${Boolean(error && !disabled) ? 'error' : Boolean(value && !disabled) ? 'success' : ''}
-        `}
+        className={`${nameClass} ${Boolean(error && !disabled)
+          ? 'error'
+          : Boolean(value && !disabled)
+            ? 'success'
+            : ''
+        }`}
       />
     </div>
   );
