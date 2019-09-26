@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -7,29 +7,72 @@ import Button from '../../../components/Button';
 
 import { login, password, name } from '../../../utils/validate';
 
+// eslint-disable-next-line no-unused-vars
+import { UserData } from '../types';
+
 import '../style.scss';
 
-const SignUp = ({ signUp }: { signUp: Function }) => {
+const SignUp = ({ user, signUp }: { user: UserData, signUp: Function }) => {
   const { t } = useTranslation('common');
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-    rePassword: '',
+    confirmPassword: '',
     name: '',
   });
+  const [formErrors, setFormErrors] = useState({
+    email: '',
+    password: '',
+    confirmPassword: '',
+    name: '',
+  });
+  const [disabled, setDisabled] = useState(true);
 
-  const validateLogin = (value: string) => t(login(value));
-  const validatePassword = (value: string) => t(password(value));
-  // eslint-disable-next-line no-confusing-arrow
-  const validateConfirmPassword = (value: string) => value !== formData.password ? t('misPass') : '';
-  const validateName = (value: string) => t(name(value));
+  const validation = {
+    email: (value: string) => t(login(value)),
+    password: (value: string) => t(password(value)),
+    confirmPassword: (value: string) => (value !== formData.password ? t('misPass') : ''),
+    name: (value: string) => t(name(value)),
+  };
+
+  const validate = (setErrors: boolean = false) => {
+    let errors = formErrors;
+
+    if (setErrors) {
+      errors = {
+        email: validation.email(formData.email),
+        password: validation.password(formData.password),
+        confirmPassword: validation.confirmPassword(formData.confirmPassword),
+        name: validation.name(formData.name),
+      };
+    }
+
+    let state = false;
+    Object.values(errors).forEach((error) => {
+      if (error) state = true;
+    });
+    setDisabled(state);
+    return state;
+  };
+
+  useEffect(() => {
+    setDisabled(false);
+  }, [user]);
+
+  useEffect(() => {
+    validate();
+  }, [formErrors]);
 
   const handleChange = (key: string, value: string) => {
+    setFormErrors({ ...formErrors, [key]: (validation as any)[key](value) });
     setFormData({ ...formData, [key]: value });
   };
 
   const handleSignUp = () => {
-    signUp(formData);
+    if (!validate(true)) {
+      signUp(formData);
+      setDisabled(true);
+    }
   };
 
   return (
@@ -39,30 +82,30 @@ const SignUp = ({ signUp }: { signUp: Function }) => {
         <Input
           placeholder={t('log')}
           onChange={(value: string) => handleChange('email', value)}
-          validate={validateLogin}
           nameClass="email"
+          error={formErrors.email}
         />
         <Input
           type="password"
           placeholder={t('pass')}
           onChange={(value: string) => handleChange('password', value)}
-          validate={validatePassword}
           nameClass="password"
+          error={formErrors.password}
         />
         <Input
           type="password"
           placeholder={t('confPass')}
-          onChange={(value: string) => handleChange('rePassword', value)}
-          validate={validateConfirmPassword}
+          onChange={(value: string) => handleChange('confirmPassword', value)}
           nameClass="confirmPassword"
+          error={formErrors.confirmPassword}
         />
         <Input
           placeholder={t('entName')}
           onChange={(value: string) => handleChange('name', value)}
-          validate={validateName}
           nameClass="name"
+          error={formErrors.name}
         />
-        <Button name={t('signUp')} color="primary" onClick={handleSignUp} />
+        <Button name={t('signUp')} color="primary" onClick={handleSignUp} disabled={disabled} />
         <p className="signUp-question">{t('signUpQuestion')}</p>
         <Link to="/sign-in">
           <Button name={t('signIn')} color="primary" design="unfill" onClick={() => {}} />

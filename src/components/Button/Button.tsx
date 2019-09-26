@@ -26,7 +26,7 @@ const Button = ({
       : ''} ${disabled
       ? ' btn-disabled'
       : ''}`}
-    onClick={onClick}
+    onClick={!disabled ? onClick : () => {}}
   >
     {name}
   </button>

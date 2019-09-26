@@ -3,10 +3,15 @@ import { connect } from 'react-redux';
 import { signUp } from '../actions';
 import SignUp from './SignUp';
 
-type UserData = { email: string, password: string };
+// eslint-disable-next-line no-unused-vars
+import { UserData } from '../types';
+
+const mapStateToProps = (state: { user: UserData }) => ({
+  user: state.user,
+});
 
 const mapDispatchToProps = (dispatch: Function) => ({
   signUp: (userDetails: UserData) => dispatch(signUp(userDetails)),
 });
 
-export default connect(null, mapDispatchToProps)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

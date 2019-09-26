@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post('/sign-in', (req, res) => res.json(req.body));
-app.post('/sign-up', (req, res) => res.json(req.body));
+app.post('/sign-in', (req, res) => setTimeout(() => res.json(req.body), 3000));
+app.post('/sign-up', (req, res) => setTimeout(() => res.json(req.body), 3000));
 
 app.listen(4000);

@@ -3,7 +3,8 @@ import {
   SIGN_UP, SIGN_UP_SUCCESS, SIGN_UP_FAILURE,
 } from './constants';
 
-type UserData = { email: string, password: string };
+// eslint-disable-next-line no-unused-vars
+import { UserData } from './types';
 
 export const signIn = (data: UserData) => ({
   type: SIGN_IN,

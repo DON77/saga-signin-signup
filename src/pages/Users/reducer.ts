@@ -10,7 +10,7 @@ export default (state = initialState, action: any): any => {
     case SIGN_UP_SUCCESS:
       return {
         ...state,
-        user: action.payload,
+        user: action.userData,
       };
     case SIGN_IN_FAILURE:
     case SIGN_UP_FAILURE:

@@ -11,7 +11,7 @@ type Props = {
   type?: 'text' | 'password' | 'email';
   disabled?: boolean;
   nameClass?: string;
-  validate: Function;
+  error?: string,
 }
 
 const Input = ({
@@ -20,15 +20,13 @@ const Input = ({
   type = 'text',
   disabled,
   nameClass = '',
-  validate,
+  error = '',
 }: Props) => {
   const [value, setValue] = useState('');
-  const [error, setError] = useState('');
 
   const handleChange = ({ target: { value: currentValue } }: ChangeEvent<HTMLInputElement>) => {
     setValue(currentValue);
     onChange(currentValue);
-    setError(validate(currentValue));
   };
 
   return (

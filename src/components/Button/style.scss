@@ -17,7 +17,7 @@
     color: #fff;
     background: #7bcd8f;
     border-color: #7bcd8f;
-    &:not(.btn-disabled):hover, &:not(.btn-disabled):focus {
+    &:not(.btn-disabled):hover {
       color: #444;
       background: #f8f8f8;
       border-color: #7bcd8f;
@@ -27,7 +27,7 @@
       color: #444;
       background: #f8f8f8;
       border-color: #7bcd8f;
-      &:not(.btn-disabled):hover, &:not(.btn-disabled):focus {
+      &:not(.btn-disabled):hover {
         color: #fff;
         background: #7bcd8f;
         border-color: #7bcd8f;

@@ -7,7 +7,8 @@ import {
 
 import request from '../../utils/api';
 
-type UserData = { email: string, password: string };
+// eslint-disable-next-line no-unused-vars
+import { UserData } from './types';
 
 function* signInSaga({ data }: { type: string, data: UserData }) {
   try {
@@ -17,7 +18,7 @@ function* signInSaga({ data }: { type: string, data: UserData }) {
       data,
     });
 
-    yield put(signInSuccess(userDetails));
+    yield put(signInSuccess(userDetails.data));
   } catch (error) {
     yield put(signInFailure(error));
   }
@@ -31,7 +32,7 @@ function* signUpSaga({ data }: { type: string, data: UserData }) {
       data,
     });
 
-    yield put(signUpSuccess(userDetails));
+    yield put(signUpSuccess(userDetails.data));
   } catch (error) {
     yield put(signUpFailure(error));
   }
